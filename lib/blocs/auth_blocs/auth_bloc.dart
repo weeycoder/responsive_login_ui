@@ -55,20 +55,11 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
   Future<void> _onSignOutUserEvent(
       SignOutUserEvent event, Emitter<AuthState> emit) async {
-    if (!isClosed) {
-      emit(SignOutLoadingState());
-    } else {
-      return;
-    }
+    emit(SignOutLoadingState());
     try {
       await _firebaseAuth.signOut();
       UserSharedPreferences.clearSharedPreference();
-      //await FirebaseAuth.instance.signOut();
-      if (!isClosed) {
-        emit(SignOutSuccessState(message: 'Sign out successfully'));
-      } else {
-        return;
-      }
+      emit(SignOutSuccessState(message: 'Sign out successfully'));
     } catch (e) {
       emit(AuthFailureState(message: e.toString()));
     }

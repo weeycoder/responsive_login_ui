@@ -102,7 +102,10 @@ class LoginScreen extends StatelessWidget {
                   press: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
-                      return SignupScreen();
+                      return BlocProvider.value(
+                        value: authBloc,
+                        child: SignupScreen(),
+                      );
                     }));
                   },
                 ),

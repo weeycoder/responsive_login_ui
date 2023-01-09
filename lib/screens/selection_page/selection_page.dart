@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:login_signin_ui/blocs/auth_blocs/auth_bloc.dart';
-import 'package:login_signin_ui/screens/cvm2/cmv2.dart';
+import 'package:login_signin_ui/models/service_model.dart';
+import 'package:login_signin_ui/screens/selection_page/service_detail.dart';
 import 'package:login_signin_ui/screens/welcomes/welcome_screen.dart';
 
 class SelectionScreen extends StatelessWidget {
@@ -31,8 +32,12 @@ class SelectionScreen extends StatelessWidget {
                 content: Text(state.message), backgroundColor: Colors.green));
             Navigator.pushAndRemoveUntil(
                 context,
-                MaterialPageRoute(builder: (context) => const WelcomeScreen()),
-                (route) => false);
+                MaterialPageRoute(
+                    builder: (context) => BlocProvider.value(
+                          value: authBloc,
+                          child: const WelcomeScreen(),
+                        )),
+                (route) => true);
           }
         },
         child: ListView(
@@ -47,8 +52,18 @@ class SelectionScreen extends StatelessWidget {
                           children: <Widget>[
                         GestureDetector(
                             onTap: () {
-                              Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => SwipeScreen()));
+                              Navigator.of(context)
+                                  .push(MaterialPageRoute(builder: (context) {
+                                ServiceModel serviceModel = ServiceModel(
+                                  id: 1,
+                                  name: 'Swipping Service',
+                                  description:
+                                      'Full house swiping service by our experienced cleaners',
+                                  price: 50,
+                                );
+                                return ServiceDetail(
+                                    serviceModel: serviceModel);
+                              }));
                             },
                             child: Image.asset(
                                 "assets/images/selection_page/Swipe.jpg",
@@ -87,8 +102,18 @@ class SelectionScreen extends StatelessWidget {
                           children: <Widget>[
                         GestureDetector(
                             onTap: () {
-                              Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => MoppingScreen()));
+                              Navigator.of(context)
+                                  .push(MaterialPageRoute(builder: (context) {
+                                ServiceModel serviceModel = ServiceModel(
+                                  id: 2,
+                                  name: 'Mopping Service',
+                                  description:
+                                      'Description: Full house mopping service by our finest housekeepers',
+                                  price: 50,
+                                );
+                                return ServiceDetail(
+                                    serviceModel: serviceModel);
+                              }));
                             },
                             child: Image.asset(
                                 "assets/images/selection_page/Mop.jpg",
@@ -127,8 +152,18 @@ class SelectionScreen extends StatelessWidget {
                           children: <Widget>[
                         GestureDetector(
                             onTap: () {
-                              Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => VacuumScreen()));
+                              Navigator.of(context)
+                                  .push(MaterialPageRoute(builder: (context) {
+                                ServiceModel serviceModel = ServiceModel(
+                                  id: 3,
+                                  name: 'Vacuum Service',
+                                  description:
+                                      'Description: Full house vacuum service by our talented housekeepers',
+                                  price: 75,
+                                );
+                                return ServiceDetail(
+                                    serviceModel: serviceModel);
+                              }));
                             },
                             child: Image.asset(
                                 "assets/images/selection_page/vacuum.jpg",
@@ -167,8 +202,18 @@ class SelectionScreen extends StatelessWidget {
                           children: <Widget>[
                         GestureDetector(
                             onTap: () {
-                              Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => OrganiseScreen()));
+                              Navigator.of(context)
+                                  .push(MaterialPageRoute(builder: (context) {
+                                ServiceModel serviceModel = ServiceModel(
+                                  id: 4,
+                                  name: 'Organising Service',
+                                  description:
+                                      'Description: Full house vacuum service by our talented housekeepers',
+                                  price: 100,
+                                );
+                                return ServiceDetail(
+                                    serviceModel: serviceModel);
+                              }));
                             },
                             child: Image.asset(
                                 "assets/images/selection_page/organizing.jpg",
@@ -207,8 +252,18 @@ class SelectionScreen extends StatelessWidget {
                           children: <Widget>[
                         GestureDetector(
                             onTap: () {
-                              Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => SanitiseScreen()));
+                              Navigator.of(context)
+                                  .push(MaterialPageRoute(builder: (context) {
+                                ServiceModel serviceModel = ServiceModel(
+                                  id: 5,
+                                  name: 'Sanitisation Service',
+                                  description:
+                                      'Description: Full house sanitisation service by our housekeepers',
+                                  price: 100,
+                                );
+                                return ServiceDetail(
+                                    serviceModel: serviceModel);
+                              }));
                             },
                             child: Image.asset(
                                 "assets/images/selection_page/sanitise.png",
@@ -247,8 +302,18 @@ class SelectionScreen extends StatelessWidget {
                           children: <Widget>[
                         GestureDetector(
                             onTap: () {
-                              Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => FullsetScreen()));
+                              Navigator.of(context)
+                                  .push(MaterialPageRoute(builder: (context) {
+                                ServiceModel serviceModel = ServiceModel(
+                                  id: 6,
+                                  name: 'Full Service',
+                                  description:
+                                      'Description: Full service by our talented housekeepers',
+                                  price: 200,
+                                );
+                                return ServiceDetail(
+                                    serviceModel: serviceModel);
+                              }));
                             },
                             child: Image.asset(
                                 "assets/images/selection_page/Full Set.jpg",
@@ -315,377 +380,5 @@ class SelectionScreen extends StatelessWidget {
         return alert;
       },
     );
-  }
-}
-
-class SwipeScreen extends StatefulWidget {
-  @override
-  _SwipeScreen createState() => _SwipeScreen();
-}
-
-class MoppingScreen extends StatefulWidget {
-  @override
-  _MoppingScreen createState() => _MoppingScreen();
-}
-
-class VacuumScreen extends StatefulWidget {
-  @override
-  _VacuumScreen createState() => _VacuumScreen();
-}
-
-class OrganiseScreen extends StatefulWidget {
-  @override
-  _OrganiseScreen createState() => _OrganiseScreen();
-}
-
-class SanitiseScreen extends StatefulWidget {
-  @override
-  _SanitiseScreen createState() => _SanitiseScreen();
-}
-
-class FullsetScreen extends StatefulWidget {
-  @override
-  _FullsetScreen createState() => _FullsetScreen();
-}
-
-class _SwipeScreen extends State<SwipeScreen> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          title: const Text("SWIPPING SERVICE"),
-          backgroundColor: Colors.blue,
-          automaticallyImplyLeading: false,
-        ),
-        body: Column(children: <Widget>[
-          Container(
-            margin: const EdgeInsets.all(20),
-            padding: const EdgeInsets.all(10),
-            decoration: BoxDecoration(
-                color: Colors.lightBlueAccent,
-                border: Border.all(color: Colors.lightBlue)),
-            child: const Text(
-                "This is the swipping service. We provide the best swipping service!",
-                style: TextStyle(
-                    fontSize: 25,
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold)),
-          ),
-          const SizedBox(height: 10),
-          Container(
-              width: 100.0,
-              height: 60,
-              padding: const EdgeInsets.only(top: 16.0),
-              child: Row(children: <Widget>[
-                OutlinedButton(
-                    onPressed: () {
-                      // navigate
-
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => DatabaseCar()));
-                    },
-                    child: const Text('BOOK',
-                        style: TextStyle(fontSize: 20, color: Colors.black),
-                        textAlign: TextAlign.center)),
-              ])),
-          Container(
-              width: 100.0,
-              height: 60,
-              padding: const EdgeInsets.only(top: 16.0),
-              child: Row(children: <Widget>[
-                OutlinedButton(
-                    onPressed: () {
-                      color:
-                      Colors.purpleAccent;
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => SelectionScreen()));
-                    },
-                    child: const Text(' Back ',
-                        style: TextStyle(fontSize: 20, color: Colors.black),
-                        textAlign: TextAlign.center))
-              ]))
-        ]));
-  }
-}
-
-class _MoppingScreen extends State<MoppingScreen> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          title: const Text("MOPPING SERVICE"),
-          backgroundColor: Colors.blue,
-          automaticallyImplyLeading: false,
-        ),
-        body: Column(children: <Widget>[
-          Container(
-            margin: const EdgeInsets.all(20),
-            padding: const EdgeInsets.all(10),
-            decoration: BoxDecoration(
-                color: Colors.lightBlueAccent,
-                border: Border.all(color: Colors.lightBlue)),
-            child: const Text(
-                "This is mopping service page. We provide the best mopping service of all time",
-                style: TextStyle(
-                    fontSize: 25,
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold)),
-          ),
-          const SizedBox(height: 10),
-          Container(
-              width: 100.0,
-              height: 60,
-              padding: const EdgeInsets.only(top: 16.0),
-              child: Row(children: <Widget>[
-                OutlinedButton(
-                    onPressed: () {},
-                    child: const Text('BOOK',
-                        style: TextStyle(fontSize: 20, color: Colors.black),
-                        textAlign: TextAlign.center)),
-              ])),
-          Container(
-              width: 100.0,
-              height: 60,
-              padding: const EdgeInsets.only(top: 16.0),
-              child: Row(children: <Widget>[
-                OutlinedButton(
-                    onPressed: () {
-                      color:
-                      Colors.purpleAccent;
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => SelectionScreen()));
-                    },
-                    child: const Text(' Back ',
-                        style: TextStyle(fontSize: 20, color: Colors.black),
-                        textAlign: TextAlign.center))
-              ]))
-        ]));
-  }
-}
-
-class _VacuumScreen extends State<VacuumScreen> {
-  late final ButtonStyle raisedButtonStyle;
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          title: const Text("VACUUM SERVICE"),
-          backgroundColor: Colors.blue,
-          automaticallyImplyLeading: false, //get rid of back arrow
-        ),
-        body: Column(children: <Widget>[
-          Container(
-            margin: const EdgeInsets.all(20),
-            padding: const EdgeInsets.all(10),
-            decoration: BoxDecoration(
-                color: Colors.lightBlueAccent,
-                border: Border.all(color: Colors.lightBlue)),
-            child: const Text(
-                "This is vacuum service page. We provide the best vacuum service of all time",
-                style: TextStyle(
-                    fontSize: 25,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold)),
-          ),
-          const SizedBox(height: 10),
-          Container(
-              width: 100.0,
-              height: 60,
-              padding: const EdgeInsets.only(top: 16.0),
-              child: Row(children: <Widget>[
-                OutlinedButton(
-                    onPressed: () {},
-                    child: const Text('BOOK',
-                        style: TextStyle(fontSize: 20, color: Colors.black),
-                        textAlign: TextAlign.center)),
-              ])),
-          Container(
-              width: 100.0,
-              height: 60,
-              padding: const EdgeInsets.only(top: 16.0),
-              child: Row(children: <Widget>[
-                OutlinedButton(
-                    onPressed: () {
-                      color:
-                      Colors.purpleAccent;
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => SelectionScreen()));
-                    },
-                    child: const Text(' Back ',
-                        style: TextStyle(fontSize: 20, color: Colors.black),
-                        textAlign: TextAlign.center))
-              ]))
-        ]));
-  }
-}
-
-class _OrganiseScreen extends State<OrganiseScreen> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          title: const Text("ORGANISING SERVICE"),
-          backgroundColor: Colors.blue,
-          automaticallyImplyLeading: false,
-        ),
-        body: Column(children: <Widget>[
-          Container(
-            margin: const EdgeInsets.all(20),
-            padding: const EdgeInsets.all(10),
-            decoration: BoxDecoration(
-                color: Colors.lightBlueAccent,
-                border: Border.all(color: Colors.lightBlue)),
-            child: const Text(
-                "This is organising service page. We provide the best organising service of all time",
-                style: TextStyle(
-                    fontSize: 25,
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold)),
-          ),
-          const SizedBox(height: 10),
-          Container(
-              width: 100.0,
-              height: 60,
-              padding: const EdgeInsets.only(top: 16.0),
-              child: Row(children: <Widget>[
-                OutlinedButton(
-                    onPressed: () {},
-                    child: const Text('BOOK',
-                        style: TextStyle(fontSize: 20, color: Colors.black),
-                        textAlign: TextAlign.center)),
-              ])),
-          Container(
-              width: 100.0,
-              height: 60,
-              padding: const EdgeInsets.only(top: 16.0),
-              child: Row(children: <Widget>[
-                OutlinedButton(
-                    onPressed: () {
-                      color:
-                      Colors.purpleAccent;
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => SelectionScreen()));
-                    },
-                    child: const Text(' Back ',
-                        style: TextStyle(fontSize: 20, color: Colors.black),
-                        textAlign: TextAlign.center))
-              ]))
-        ]));
-  }
-}
-
-class _SanitiseScreen extends State<SanitiseScreen> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          title: const Text("SANITISATION SERVICE"),
-          backgroundColor: Colors.blue,
-          automaticallyImplyLeading: false,
-        ),
-        body: Column(children: <Widget>[
-          Container(
-            margin: const EdgeInsets.all(20),
-            padding: const EdgeInsets.all(10),
-            decoration: BoxDecoration(
-                color: Colors.lightBlueAccent,
-                border: Border.all(color: Colors.lightBlue)),
-            child: const Text(
-                "This is sanitisation service page. We provide the best sanitisation service of all time",
-                style: TextStyle(
-                    fontSize: 25,
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold)),
-          ),
-          const SizedBox(height: 10),
-          Container(
-              width: 100.0,
-              height: 60,
-              padding: const EdgeInsets.only(top: 16.0),
-              child: Row(children: <Widget>[
-                OutlinedButton(
-                    onPressed: () {},
-                    child: const Text('BOOK',
-                        style: TextStyle(fontSize: 20, color: Colors.black),
-                        textAlign: TextAlign.center)),
-              ])),
-          Container(
-              width: 100.0,
-              height: 60,
-              padding: const EdgeInsets.only(top: 16.0),
-              child: Row(children: <Widget>[
-                OutlinedButton(
-                    onPressed: () {
-                      color:
-                      Colors.purpleAccent;
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => SelectionScreen()));
-                    },
-                    child: const Text(' Back ',
-                        style: TextStyle(fontSize: 20, color: Colors.black),
-                        textAlign: TextAlign.center))
-              ]))
-        ]));
-  }
-}
-
-class _FullsetScreen extends State<FullsetScreen> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          title: const Text("FULL SERVICE"),
-          backgroundColor: Colors.blue,
-          automaticallyImplyLeading: false,
-        ),
-        body: Column(children: <Widget>[
-          Container(
-            margin: const EdgeInsets.all(20),
-            padding: const EdgeInsets.all(10),
-            decoration: BoxDecoration(
-                color: Colors.lightBlueAccent,
-                border: Border.all(color: Colors.lightBlue)),
-            child: const Text(
-                "This is full service page. We provide (swipping service + mopping service + vacuum service + organising service + sanitisation servide) at the cheapest possible price!",
-                style: TextStyle(
-                    fontSize: 25,
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold)),
-          ),
-          const SizedBox(height: 10),
-          Container(
-              width: 100.0,
-              height: 60,
-              padding: const EdgeInsets.only(top: 16.0),
-              child: Row(children: <Widget>[
-                OutlinedButton(
-                    onPressed: () {},
-                    child: const Text('BOOK',
-                        style: TextStyle(fontSize: 20, color: Colors.black),
-                        textAlign: TextAlign.center)),
-              ])),
-          Container(
-              width: 100.0,
-              height: 60,
-              padding: const EdgeInsets.only(top: 16.0),
-              child: Row(children: <Widget>[
-                OutlinedButton(
-                    onPressed: () {
-                      color:
-                      Colors.purpleAccent;
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => SelectionScreen()));
-                    },
-                    child: const Text(' Back ',
-                        style: TextStyle(fontSize: 20, color: Colors.black),
-                        textAlign: TextAlign.center))
-              ]))
-        ]));
   }
 }

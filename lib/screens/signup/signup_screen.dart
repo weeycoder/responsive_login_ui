@@ -51,11 +51,8 @@ class SignupScreen extends StatelessWidget {
               context,
               MaterialPageRoute(
                 builder: (context) {
-                  // return BlocProvider.value(
-                  //     value: authBloc, child: const SelectionScreen());
-                  return BlocProvider(
-                      create: (context) => authBloc,
-                      child: const SelectionScreen());
+                  return BlocProvider.value(
+                      value: authBloc, child: const SelectionScreen());
                 },
               ),
             );
@@ -108,7 +105,10 @@ class SignupScreen extends StatelessWidget {
                   press: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
-                      return LoginScreen();
+                      return BlocProvider.value(
+                        value: authBloc,
+                        child: LoginScreen(),
+                      );
                     }));
                   }),
             ],
