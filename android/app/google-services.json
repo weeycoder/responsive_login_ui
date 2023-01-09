@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "862102174729",
+    "project_id": "cleanmaid-eb095",
+    "storage_bucket": "cleanmaid-eb095.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:862102174729:android:6b09848a54ef2743f88cd8",
+        "android_client_info": {
+          "package_name": "com.example.login_signin_ui"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "862102174729-gnplafunr5h8v6h6l86er5ld23hsr6m4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB74ElPRzV2YZI6F1E4OmEMJSx6gfAxZ0U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "862102174729-gnplafunr5h8v6h6l86er5ld23hsr6m4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
